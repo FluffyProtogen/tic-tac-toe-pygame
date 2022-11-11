@@ -6,6 +6,7 @@ pygame.init()  # Initialize. Do this first!
 grid = [[None, None, None],
         [None, None, None],
         [None, None, None]]
+
 x_turn = True
 clicked_last_frame = False
 
