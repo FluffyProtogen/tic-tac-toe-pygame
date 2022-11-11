@@ -3,9 +3,9 @@ import pygame
 
 pygame.init()  # Initialize. Do this first!
 
-grid = [["", "", ""],
-        ["", "", ""],
-        ["", "", ""]]
+grid = [[None, None, None],
+        [None, None, None],
+        [None, None, None]]
 x_turn = True
 
 black = 0, 0, 0  # Color black
@@ -74,14 +74,14 @@ def retry_pressed(screen, clicked_this_frame):
 # Function to check if a player won
 def check_for_win(grid):
     for y in range(3):
-        if grid[y][0] == grid[y][1] == grid[y][2] != "":
+        if grid[y][0] == grid[y][1] == grid[y][2] != None:
             return grid[y][0]
     for x in range(3):
-        if grid[0][x] == grid[1][x] == grid[2][x] != "":
+        if grid[0][x] == grid[1][x] == grid[2][x] != None:
             return grid[0][x]
-    if grid[0][0] == grid[1][1] == grid[2][2] != "":
+    if grid[0][0] == grid[1][1] == grid[2][2] != None:
         return grid[0][0]
-    if grid[0][2] == grid[1][1] == grid[2][0] != "":
+    if grid[0][2] == grid[1][1] == grid[2][0] != None:
         return grid[0][2]
     return None
 
@@ -113,9 +113,9 @@ while True:
 
     # If the player presses the restart button, restart the game
     if retry_pressed(screen, clicked_this_frame):
-        grid = [["", "", ""],
-                ["", "", ""],
-                ["", "", ""]]
+        grid = [[None, None, None],
+                [None, None, None],
+                [None, None, None]]
         x_turn = True
 
     # Check if any player won
@@ -133,7 +133,7 @@ while True:
             grid_y = (mouse_y - 100) // 200
 
             # Make sure the location the player clicks on is empty
-            if grid[grid_y][grid_x] == "":
+            if grid[grid_y][grid_x] == None:
                 if x_turn:
                     grid[grid_y][grid_x] = "X"
                 else:
