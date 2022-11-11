@@ -105,7 +105,8 @@ while True:
     click = pygame.mouse.get_pressed()[0]
     mouse_x, mouse_y = pygame.mouse.get_pos()  # Get the mouse position
 
-    # If we don't check if the button was pressed this frame and not pressed the previous frame, it will think we cl
+    # If we don't check if the button was pressed this frame and not pressed the previous frame,
+    # it will respond to the mouse being held down
     if click and not clicked_last_frame:
         clicked_this_frame = True
     else:
