@@ -55,14 +55,7 @@ def draw_board(screen, grid):
                 screen.blit(o_text, (position_x, position_y))
 
 
-# Draw the player won bar
-def draw_won_bar(screen, message):
-    message = small_font.render(message, True, black)
-    screen.blit(message, (20, 30))
-
 # Checks if the player pressed the retry button
-
-
 def retry_pressed(screen, clicked_this_frame):
     rect = pygame.draw.rect(screen, black, [380, 15, 200, 70])
     retry_text = small_font.render("Retry", True, white)
@@ -126,7 +119,8 @@ while True:
 
     # Someone has won
     if winner != None:
-        draw_won_bar(screen, f"Player {winner} Won")
+        message = small_font.render(f"Player {winner} Won", True, black)
+        screen.blit(message, (20, 30))
     # No player has won, check if the player has clicked
     elif clicked_this_frame:
         # Checking if the mouse y is greater than 100 because the board starts over y = 100
