@@ -93,7 +93,6 @@ screen = pygame.display.set_mode(screen_size)
 
 pygame.display.set_caption("Tic Tac Toe")  # Set the title of the window
 
-clicked_last_frame = False
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
