@@ -7,6 +7,7 @@ grid = [[None, None, None],
         [None, None, None],
         [None, None, None]]
 x_turn = True
+clicked_last_frame = False
 
 black = 0, 0, 0  # Color black
 white = 255, 255, 255  # Color white
