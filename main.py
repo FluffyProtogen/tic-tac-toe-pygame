@@ -99,6 +99,7 @@ while True:
             sys.exit()
 
     screen.fill(white)  # Fill the screen with white
+    draw_board(screen, grid)
 
     # Get the left mouse button state (0 is mouse left)
     click = pygame.mouse.get_pressed()[0]
@@ -141,5 +142,4 @@ while True:
                     grid[grid_y][grid_x] = "O"
                 x_turn = not x_turn
 
-    draw_board(screen, grid)
     pygame.display.flip()  # Updates the display
