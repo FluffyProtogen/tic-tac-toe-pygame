@@ -55,6 +55,12 @@ def draw_board(screen, grid):
                 screen.blit(o_text, (position_x, position_y))
 
 
+# Draw the player won bar
+def draw_won_bar(screen, message):
+    message = small_font.render(message, True, black)
+    screen.blit(message, (20, 30))
+
+
 # Checks if the player pressed the retry button
 def retry_pressed(screen, clicked_this_frame):
     rect = pygame.draw.rect(screen, black, [380, 15, 200, 70])
@@ -86,20 +92,19 @@ screen = pygame.display.set_mode(screen_size)
 
 pygame.display.set_caption("Tic Tac Toe")  # Set the title of the window
 
+clicked_last_frame = False
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
 
     screen.fill(white)  # Fill the screen with white
-    draw_board(screen, grid)
 
     # Get the left mouse button state (0 is mouse left)
     click = pygame.mouse.get_pressed()[0]
     mouse_x, mouse_y = pygame.mouse.get_pos()  # Get the mouse position
 
-    # If we don't check if the button was pressed this frame and not pressed the previous frame,
-    # it will respond to the mouse being held down
+    # If we don't check if the button was pressed this frame and not pressed the previous frame, it will think we cl
     if click and not clicked_last_frame:
         clicked_this_frame = True
     else:
@@ -119,8 +124,7 @@ while True:
 
     # Someone has won
     if winner != None:
-        message = small_font.render(f"Player {winner} Won", True, black)
-        screen.blit(message, (20, 30))
+        draw_won_bar(screen, f"Player {winner} Won")
     # No player has won, check if the player has clicked
     elif clicked_this_frame:
         # Checking if the mouse y is greater than 100 because the board starts over y = 100
@@ -137,4 +141,5 @@ while True:
                     grid[grid_y][grid_x] = "O"
                 x_turn = not x_turn
 
+    draw_board(screen, grid)
     pygame.display.flip()  # Updates the display
